@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prueba gsap3</title>
+    <style>
+        body {
+            margin: 0
+        }
+
+        #header {
+            background-color: darkcyan;
+            position: relative;
+            opacity: 0;
+            transform: translate(0px, 0px);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 110vh;
+            flex-direction: column;
+            background-image: url(https://live.staticflickr.com/3851/14639811877_c64e505e45_k_d.jpg);
+            background-position: center center;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        #titulo {
+            position: relative;
+            opacity: 0;
+            transform: translatey(-50px);
+            text-transform: uppercase;
+            color: #fff;
+            z-index: 2;
+            text-shadow: 3px 3px 5px #000;
+            font-size: 5em;
+            font-family: helvetica;
+            text-align: center;
+            top: 0;
+            margin: 0;
+        }
+
+        #subtitle {
+            position: relative;
+            opacity: 0;
+            transform: translatex(10%);
+            color: lightgoldenrodyellow;
+            z-index: 2;
+            text-shadow: 3px 3px 5px #000;
+            font-size: 2em;
+            font-family: arial;
+            text-align: center;
+            top: 0;
+            margin: 0;
+            width: 50%;
+        }
+
+        #sec1 {
+            opacity: .8;
+            background: #fff url(https://live.staticflickr.com/3878/14806364214_c7f665d23d_k_d.jpg) no-repeat center center;
+            background-attachment: fixed;
+            height: 110vh;
+        }
+
+        #sec2 {
+
+            background: #fff url(https://live.staticflickr.com/2933/14264398194_c16f065f9c_k_d.jpg) no-repeat center center;
+            background-attachment: fixed;
+            height: 110vh;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header id="header">
+        <h1 id="titulo">titulo de prueba</h1>
+        <h2 id="subtitle">Texto de subtitulo describiendo o vendiendo humo</h2>
+    </header>
+    <section id="sec1">
+        <div class="ico" id="ico1"></div>
+        <div class="ico" id="ico2"></div>
+        <div class="ico" id="ico3"></div>
+    </section>
+    <section id="sec2"></section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.1/CSSRulePlugin.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        var header = document.getElementById("header")
+        var titulo = document.getElementById("titulo")
+        var image = document.getElementById("image")
+        var subtitle = document.getElementById("subtitle")
+        gsap.to(header, { duration: 2, x: 0, y: 0, yPercent: 0, opacity: 1, delay: 1 });
+        //gsap.to(image, { duration: 1, y: 0, y: 0, opacity: 1, delay: 2 });
+        gsap.to(titulo, { duration: 1, yPercent: 0, y: 0, opacity: 1, delay: 2 });
+        gsap.to(subtitle, { duration: 2, yPercent: 0, y: 0, x: 0, opacity: 1, delay: 3 });
+
+
+
+
+        let sec1 = $("#sec1");
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            if (scroll >= 500) {
+                gsap.to(sec1, { duration: 2, opacity: 1, delay: 0 });
+            }
+            else {
+                gsap.to(sec1, { duration: 1, opacity: .1, delay: 0 });
+            }
+        })
+    </script>
+</body>
+
+</html>
